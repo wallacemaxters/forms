@@ -1,0 +1,37 @@
+$column-number: 12;
+$grid-gutter: 4px;
+
+$grid-class: wgm-grid;
+$grid-row: wgm-row;
+
+.#{$grid-row} {
+
+    box-sizing:border-box;
+    width:100%;
+    margin:0;
+
+    &:before, &:after{
+        content: ' ';
+        display:block;
+        clear:both;
+    }
+
+    [class*="#{$grid-class}"] {
+        float:left;
+        box-sizing: border-box;
+        min-height:1px;
+        margin:0;
+        &:last-of-type{
+            padding-right:0;
+        }
+    }
+
+    @for $i from 1 through $column-number {
+        & .#{$grid-class}-#{$i} {
+            width: 100%/$column-number * $i;
+            padding-right:$grid-gutter;
+            padding-bottom: $grid-gutter;
+            padding-top: $grid-gutter;
+        }
+    }
+}

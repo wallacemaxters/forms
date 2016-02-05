@@ -1,0 +1,90 @@
+.wgm-form fieldset {
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0; }
+
+.wgm-form legend {
+  font-size: 20px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #333; }
+
+.wgm-form.fluid input[type='text'], .wgm-form.fluid input[type='search'], .wgm-form.fluid input[type='number'], .wgm-form.fluid select {
+  width: 100%;
+  width: calc(100% - 2px); }
+
+.wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'], .wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form select {
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Arial;
+  font-size: 14px;
+  height: 40px;
+  margin: 1px -3.5px 1px 1px;
+  outline: none;
+  padding: 10px; }
+
+.wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'] {
+  background-color: #efefef;
+  border: 1px solid #d1d1d1;
+  color: #222;
+  cursor: pointer;
+  transition: box-shadow .1s linear; }
+  .wgm-form button:hover, .wgm-form input[type='button']:hover, .wgm-form input[type='submit']:hover, .wgm-form input[type='reset']:hover {
+    box-shadow: 0 0 40px #c7c7c7 inset; }
+  .wgm-form button:active, .wgm-form input[type='button']:active, .wgm-form input[type='submit']:active, .wgm-form input[type='reset']:active {
+    transform: translateY(1.5px); }
+
+.wgm-form [type="submit"] {
+  background-color: #3c8dbc;
+  border-color: #2374a3;
+  color: ghostwhite; }
+  .wgm-form [type="submit"]:hover {
+    box-shadow: 0 0 40px #146594 inset; }
+
+.wgm-form [type="reset"] {
+  background-color: #E06565;
+  border-color: #c74c4c;
+  color: ghostwhite; }
+  .wgm-form [type="reset"]:hover {
+    box-shadow: 0 0 40px #b83d3d inset; }
+
+.wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form select {
+  background-color: #fefefe;
+  border: 1px solid #cccccc;
+  transition: box-shadow .2s linear;
+  color: #222; }
+  .wgm-form input[type='text']:not(select):focus, .wgm-form input[type='search']:not(select):focus, .wgm-form input[type='number']:not(select):focus, .wgm-form select:not(select):focus {
+    box-shadow: 0px 0px 3px #3DFAFF; }
+
+.wgm-form select[multiple] {
+  height: auto;
+  max-height: 120px; }
+
+.wgm-form .wgm-input-group label {
+  background-color: #ccc;
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  border: 1px solid #b8b8b8;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  font-family: Arial;
+  height: 40px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  width: 14%;
+  margin-top: 1px; }
+
+.wgm-form .wgm-input-group input[type='text'], .wgm-form .wgm-input-group input[type='search'], .wgm-form .wgm-input-group input[type='number'], .wgm-form .wgm-input-group select {
+  float: left;
+  display: block;
+  width: 85%;
+  width: calc(86% - $input-margin);
+  margin-left: 0;
+  border-left: none;
+  border-radius: 0 4px 4px 0; }

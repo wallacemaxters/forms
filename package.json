@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "^3.0.0"
+  }
+
+}

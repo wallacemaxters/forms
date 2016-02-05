@@ -1,0 +1,181 @@
+
+// Default class name definitions 
+
+$prefix-name: wgm;
+
+$form-name: "#{$prefix-name}-form";
+
+$form-button-name: "#{$prefix-name}-btn";
+
+$form-input-name: "#{$prefix-name}-input";
+
+
+// Input definitions 
+
+$input-bg-color: #fefefe;
+
+$input-border-color: #cccccc;
+
+$input-focus-color: #3DFAFF;
+
+$input-font-size: 14px;
+
+$input-height: 40px;
+
+$input-font-family: Arial;
+
+$input-margin: 1px;
+
+
+// Button definitions 
+
+$button-bg-default: #efefef;
+
+$button-bg-submit: #3c8dbc;
+
+$button-bg-reset: #E06565;
+
+$button-color-light: ghostwhite;
+
+$button-color-dark: #222;
+
+$button-border-variation: -25;
+
+// Label styles :d
+$label-bg: #ccc;
+
+// Elements 
+
+$inputs: "input[type='text'],input[type='search'],input[type='number'], select";
+
+.#{$form-name} {
+
+    fieldset{
+        background-color: #fafafa;
+        border:1px solid $button-bg-default - 15;
+        padding:5px;
+        display:block;
+        width:100%;
+        box-sizing:border-box;
+        margin:0;
+    }
+
+    legend{
+        font-size:20px;
+        font-family: $input-font-family;
+        font-weight:bold;
+        color: #333;
+    }
+
+
+    &.fluid {
+
+        #{$inputs} { 
+            width:100%;
+            width:calc(100% - 2px);
+        }
+    }
+
+    %input-style{
+        border-radius:4px;
+        box-sizing:border-box;
+        font-family:$input-font-family;
+        font-size: $input-font-size;
+        height: $input-height;
+        margin:$input-margin -3.5px $input-margin $input-margin;
+        outline: none; 
+        padding:10px;
+    }
+
+    button, input[type='button'],input[type='submit'],input[type='reset'] {
+
+        @extend %input-style;
+
+        background-color: $button-bg-default;
+        border: 1px solid $button-bg-default - 30;
+        color: $button-color-dark;
+        cursor:pointer;        
+        transition: box-shadow .1s linear;
+
+        &:hover{
+            box-shadow: 0 0 40px $button-bg-default - 40 inset;
+        }
+
+        &:active{
+            transform: translateY(1.5px);
+        }
+    }
+
+    [type="submit"] {
+
+        background-color: $button-bg-submit;
+        border-color: $button-bg-submit + $button-border-variation;
+        color: $button-color-light;
+
+        &:hover{
+            box-shadow: 0 0 40px $button-bg-submit - 40 inset;
+        }
+    }
+
+    [type="reset"] {
+
+        background-color: $button-bg-reset;
+        border-color: $button-bg-reset + $button-border-variation;   
+        color: $button-color-light;
+
+        &:hover{
+            box-shadow: 0 0 40px $button-bg-reset - 40 inset;
+        }
+    }
+
+    #{$inputs} {
+        @extend %input-style;
+        background-color:$input-bg-color;;
+        border:1px solid $input-border-color;
+        transition: box-shadow .2s linear;
+        color: $button-color-dark;
+
+        &:not(select):focus{
+            box-shadow: 0px 0px 3px $input-focus-color;
+        }
+    }
+
+    select[multiple] {
+        height:auto;
+        max-height: $input-height * 3;
+    }
+
+
+    .#{$prefix-name}-input-group{
+
+        label{
+
+            background-color: $label-bg;
+            border-radius:4px 0 0 4px;
+            border-right:none;
+            border:1px solid $label-bg - 20;
+            box-sizing:border-box;
+            display:block;
+            float:left;
+            font-family: $input-font-family;
+            height: $input-height;
+            margin:0;
+            padding:10px;
+            text-align:center;
+            width:14%;
+            margin-top:$input-margin;
+
+        }
+
+        #{$inputs} {
+            float:left;
+            display:block;
+            width:85%;
+            width:calc(86% - $input-margin);
+            margin-left:0;
+            border-left:none;
+            border-radius:0 4px 4px 0;
+        }
+    }
+
+}
