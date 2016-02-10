@@ -17,7 +17,7 @@
 
         <div class="wgm-row">
 
-            <div class="wgm-grid-4">
+            <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
 
                 <div class="wgm-input-group">
                     <label class="label-horizontal">mês</label>
@@ -30,11 +30,11 @@
                 
             </div>
 
-            <div class="wgm-grid-4">
+            <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
                 <input type="text" />
             </div>
             
-            <div class="wgm-grid-4">
+            <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
                 <input type="search" />
             </div>
 
@@ -45,7 +45,7 @@
 
         <div class="wgm-row">
             
-            <div class="wgm-grid-4">
+            <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
 
                 <input type="reset" name="Cancelar" />
                 <button type="button">Informação</button>
@@ -55,7 +55,7 @@
                 <button type="submit">Aprovar Foto</button>
             </div>
 
-            <div class="wgm-grid-8">
+            <div class="wgm-grid-8 wgm-grid-xs-12">
                 <select multiple="multiple">
                     <?php foreach (range(1, 12) as $key => $value): ?>
                         <option value="<?= $value ?>"><?= strftime('%b', mktime(0, 0, 0, $value, 1))?></option>
@@ -67,7 +67,7 @@
         <fieldset>
         <div class="wgm-row">
             
-                <div class="wgm-grid-4">
+                <div class="wgm-grid-4 wgm-grid-xs-12">
 
                     <input type="reset" name="Cancelar" />
                     <button type="button">Informação</button>
@@ -77,7 +77,7 @@
                     <button type="submit">Aprovar Foto</button>
                 </div>
 
-                <div class="wgm-grid-8">
+                <div class="wgm-grid-8 wgm-grid-xs-12">
                     <select multiple="multiple">
                         <?php foreach (range(1, 12) as $key => $value): ?>
                             <option value="<?= $value ?>"><?= strftime('%B', mktime(0, 0, 0, $value, 1))?></option>

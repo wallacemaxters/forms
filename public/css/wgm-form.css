@@ -29,25 +29,25 @@
 
 .wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'] {
   background-color: #efefef;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #a3a3a3;
   color: #222;
   cursor: pointer;
   transition: box-shadow .1s linear; }
   .wgm-form button:hover, .wgm-form input[type='button']:hover, .wgm-form input[type='submit']:hover, .wgm-form input[type='reset']:hover {
-    box-shadow: 0 0 40px #c7c7c7 inset; }
+    box-shadow: 0 0 40px #d6d6d6 inset; }
   .wgm-form button:active, .wgm-form input[type='button']:active, .wgm-form input[type='submit']:active, .wgm-form input[type='reset']:active {
     transform: translateY(1.5px); }
 
 .wgm-form [type="submit"] {
   background-color: #3c8dbc;
-  border-color: #2374a3;
+  border-color: #1d455b;
   color: ghostwhite; }
   .wgm-form [type="submit"]:hover {
-    box-shadow: 0 0 40px #146594 inset; }
+    box-shadow: 0 0 20px #307095 inset; }
 
 .wgm-form [type="reset"] {
   background-color: #E06565;
-  border-color: #c74c4c;
+  border-color: #a42121;
   color: ghostwhite; }
   .wgm-form [type="reset"]:hover {
     box-shadow: 0 0 40px #b83d3d inset; }
@@ -68,7 +68,7 @@
   background-color: #ccc;
   border-radius: 4px 0 0 4px;
   border-right: none;
-  border: 1px solid #b8b8b8;
+  border: 1px solid #999999;
   box-sizing: border-box;
   display: block;
   float: left;
@@ -84,7 +84,7 @@
   float: left;
   display: block;
   width: 85%;
-  width: calc(86% - $input-margin);
+  width: calc(86% - 1px);
   margin-left: 0;
   border-left: none;
   border-radius: 0 4px 4px 0; }

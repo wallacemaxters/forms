@@ -39,8 +39,6 @@ $button-color-light: ghostwhite;
 
 $button-color-dark: #222;
 
-$button-border-variation: -25;
-
 // Label styles :d
 $label-bg: #ccc;
 
@@ -92,13 +90,13 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
         @extend %input-style;
 
         background-color: $button-bg-default;
-        border: 1px solid $button-bg-default - 30;
+        border: 1px solid darken($button-bg-default, 30);
         color: $button-color-dark;
-        cursor:pointer;        
+        cursor: pointer;        
         transition: box-shadow .1s linear;
 
         &:hover{
-            box-shadow: 0 0 40px $button-bg-default - 40 inset;
+            box-shadow: 0 0 40px darken($button-bg-default, 10) inset;
         }
 
         &:active{
@@ -109,18 +107,18 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
     [type="submit"] {
 
         background-color: $button-bg-submit;
-        border-color: $button-bg-submit + $button-border-variation;
+        border-color: darken($button-bg-submit, 25);
         color: $button-color-light;
 
         &:hover{
-            box-shadow: 0 0 40px $button-bg-submit - 40 inset;
+            box-shadow: 0 0 20px darken($button-bg-submit, 10) inset;
         }
     }
 
     [type="reset"] {
 
         background-color: $button-bg-reset;
-        border-color: $button-bg-reset + $button-border-variation;   
+        border-color: darken($button-bg-reset, 25);   
         color: $button-color-light;
 
         &:hover{
@@ -153,7 +151,7 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
             background-color: $label-bg;
             border-radius:4px 0 0 4px;
             border-right:none;
-            border:1px solid $label-bg - 20;
+            border:1px solid darken($label-bg, 20);
             box-sizing:border-box;
             display:block;
             float:left;
@@ -171,7 +169,7 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
             float:left;
             display:block;
             width:85%;
-            width:calc(86% - $input-margin);
+            width:calc(86% - #{$input-margin});
             margin-left:0;
             border-left:none;
             border-radius:0 4px 4px 0;

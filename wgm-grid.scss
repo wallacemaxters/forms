@@ -1,14 +1,49 @@
+// Grid size definitions
 $column-number: 12;
-$grid-gutter: 4px;
 
-$grid-class: wgm-grid;
-$grid-row: wgm-row;
+$grid-gutter: 5px;
+
+// Grid names definitions
+
+$grid-name: wgm;
+
+$grid-class: #{$grid-name}-grid;
+
+$grid-row: #{$grid-name}-row;
+
+// Media size definitions
+
+$media-desktop: "(min-width: 996px)";
+
+$media-tablet: "(min-width: 768px)";
+
+$media-tv: "(min-width: 1024px)";
+
+
+// Grid mixin to reuse 
+@mixin create-grid($cols, $prefix: false) {
+        
+    @if not $prefix {
+        $name: #{$grid-class};
+    } @else {
+        $name: #{$grid-class}-#{$prefix}
+    }
+
+    @for $i from 1 through $cols {
+        & .#{$name}-#{$i} {
+            padding: $grid-gutter;
+            width: percentage($i/$column-number);
+        }
+    }
+}
 
 .#{$grid-row} {
 
     box-sizing:border-box;
-    width:100%;
     margin:0;
+    width:100%;
+    margin-right: -$grid-gutter;
+    margin-left: -$grid-gutter;
 
     &:before, &:after{
         content: ' ';
@@ -17,21 +52,23 @@ $grid-row: wgm-row;
     }
 
     [class*="#{$grid-class}"] {
-        float:left;
         box-sizing: border-box;
-        min-height:1px;
+        float:left;
         margin:0;
-        &:last-of-type{
-            padding-right:0;
-        }
+        min-height:1px;
     }
 
-    @for $i from 1 through $column-number {
-        & .#{$grid-class}-#{$i} {
-            width: 100%/$column-number * $i;
-            padding-right:$grid-gutter;
-            padding-bottom: $grid-gutter;
-            padding-top: $grid-gutter;
-        }
+    @include create-grid($column-number, xs);
+
+    @media #{$media-tablet} {
+        @include create-grid($column-number, sm);
+    }
+
+    @media #{$media-desktop} {
+        @include create-grid($column-number);
+    }
+
+    @media #{$media-tv} {
+        @include create-grid($column-number, lg);
     }
 }
