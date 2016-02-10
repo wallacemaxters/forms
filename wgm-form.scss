@@ -29,28 +29,92 @@ $input-margin: 1px;
 
 // Button definitions 
 
-$button-bg-default: #efefef;
+$default-color: #efefef;
 
-$button-bg-submit: #3c8dbc;
+$confirm-color: #3c8dbc;
 
-$button-bg-reset: #E06565;
+$cancel-color: #E06565;
 
-$button-color-light: ghostwhite;
+$green-color: #70C870;
 
-$button-color-dark: #222;
+$yellow-color: gold;
 
 // Label styles :d
 $label-bg: #ccc;
 
 // Elements 
 
-$inputs: "input[type='text'],input[type='search'],input[type='number'], select";
+$inputs: "input[type='text'],input[type='search'],input[type='number'], input[type='password'],select";
+
+@mixin button-box-shadow($color, $amount: 10%) {
+    box-shadow: 0 0 50px darken($color, $amount) inset;
+}
+
+@mixin create-extensive-button ($name, $color) {
+
+    &.#{$prefix-name}-#{$name} {
+       background-color: $color;
+       border-color: darken($color, 5%);   
+       color: #FFF;
+       &:hover {
+           @include button-box-shadow($color);
+       }
+    }
+}
+
+%input-style {
+    border-radius:4px;
+    box-sizing:border-box;
+    color: #222;
+    font-family:$input-font-family;
+    font-size: $input-font-size;
+    height: $input-height;
+    margin:$input-margin -3.5px $input-margin $input-margin;
+    outline: none; 
+    padding:10px;
+}
+
+%button-style {
+    @extend %input-style;
+    background-color: $default-color;
+    border: 1px solid darken($default-color, 30%);
+    cursor:pointer;
+    transition: box-shadow .1s linear;
+
+    &:hover{
+        @include button-box-shadow($default-color);
+    }
+
+    &:active{
+        transform: translateY(1.5px);
+    }
+}
+
+%font-family {
+    font-family: Arial;
+}
+
+.#{$prefix-name}-btn {
+
+    @extend %button-style;
+
+    border: 1px solid darken($default-color, 30%);
+
+    @include create-extensive-button(green, $green-color);
+
+    @include create-extensive-button(red, $cancel-color);
+
+    @include create-extensive-button(blue, $confirm-color);
+
+    @include create-extensive-button(yellow, $yellow-color);
+
+}
 
 .#{$form-name} {
 
-    fieldset{
+    fieldset {
         background-color: #fafafa;
-        border:1px solid $button-bg-default - 15;
+        border:1px solid darken($default-color, 15%);
         padding:5px;
         display:block;
         width:100%;
@@ -58,81 +122,46 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
         margin:0;
     }
 
-    legend{
-        font-size:20px;
-        font-family: $input-font-family;
-        font-weight:bold;
+    legend {
         color: #333;
+        font-size:20px;
+        font-weight:bold;
+        @extend %font-family;
+    }
+    
+    label {
+        @extend %font-family;
     }
 
+    label.label {
+        font-size:20px;
+        color: #222;
+    }
 
     &.fluid {
-
         #{$inputs} { 
             width:100%;
             width:calc(100% - 2px);
         }
     }
 
-    %input-style{
-        border-radius:4px;
-        box-sizing:border-box;
-        font-family:$input-font-family;
-        font-size: $input-font-size;
-        height: $input-height;
-        margin:$input-margin -3.5px $input-margin $input-margin;
-        outline: none; 
-        padding:10px;
-    }
-
-    button, input[type='button'],input[type='submit'],input[type='reset'] {
-
-        @extend %input-style;
-
-        background-color: $button-bg-default;
-        border: 1px solid darken($button-bg-default, 30);
-        color: $button-color-dark;
-        cursor: pointer;        
-        transition: box-shadow .1s linear;
-
-        &:hover{
-            box-shadow: 0 0 40px darken($button-bg-default, 10) inset;
-        }
-
-        &:active{
-            transform: translateY(1.5px);
-        }
+    button, input[type='button'], input[type='submit'], input[type='reset'] {
+        @extend %button-style;
     }
 
     [type="submit"] {
-
-        background-color: $button-bg-submit;
-        border-color: darken($button-bg-submit, 25);
-        color: $button-color-light;
-
-        &:hover{
-            box-shadow: 0 0 20px darken($button-bg-submit, 10) inset;
-        }
+        @extend .#{$prefix-name}-btn.#{$prefix-name}-blue;
     }
 
     [type="reset"] {
-
-        background-color: $button-bg-reset;
-        border-color: darken($button-bg-reset, 25);   
-        color: $button-color-light;
-
-        &:hover{
-            box-shadow: 0 0 40px $button-bg-reset - 40 inset;
-        }
+        @extend .#{$prefix-name}-btn.#{$prefix-name}-red;
     }
 
     #{$inputs} {
         @extend %input-style;
-        background-color:$input-bg-color;;
-        border:1px solid $input-border-color;
+        background-color:$input-bg-color;
+        border:1px solid darken($input-bg-color, 10%);
         transition: box-shadow .2s linear;
-        color: $button-color-dark;
-
         &:not(select):focus{
             box-shadow: 0px 0px 3px $input-focus-color;
         }
@@ -143,36 +172,33 @@ $inputs: "input[type='text'],input[type='search'],input[type='number'], select";
         max-height: $input-height * 3;
     }
 
+    .#{$prefix-name}-input-group {
 
-    .#{$prefix-name}-input-group{
-
-        label{
-
+        > label {
             background-color: $label-bg;
             border-radius:4px 0 0 4px;
+            border:1px solid darken($default-color, 10%);
             border-right:none;
-            border:1px solid darken($label-bg, 20);
             box-sizing:border-box;
             display:block;
             float:left;
             font-family: $input-font-family;
             height: $input-height;
-            margin:0;
+            margin-top:$input-margin;
+            margin-top:$input-margin;
             padding:10px;
             text-align:center;
-            width:14%;
-            margin-top:$input-margin;
-
+            width:15%;
         }
 
-        #{$inputs} {
-            float:left;
-            display:block;
-            width:85%;
-            width:calc(86% - #{$input-margin});
-            margin-left:0;
+        label+#{$inputs} {
             border-left:none;
             border-radius:0 4px 4px 0;
+            display:block;
+            float:left;
+            margin-left:0;
+            width:84%;
+            width:calc(85% - #{$input-margin});
         }
     }
 

@@ -1,25 +1,7 @@
-.wgm-form fieldset {
-  background-color: #fafafa;
-  border: 1px solid #e0e0e0;
-  padding: 5px;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0; }
-
-.wgm-form legend {
-  font-size: 20px;
-  font-family: Arial;
-  font-weight: bold;
-  color: #333; }
-
-.wgm-form.fluid input[type='text'], .wgm-form.fluid input[type='search'], .wgm-form.fluid input[type='number'], .wgm-form.fluid select {
-  width: 100%;
-  width: calc(100% - 2px); }
-
-.wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'], .wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form select {
+.wgm-btn, .wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'], .wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form input[type='password'], .wgm-form select {
   border-radius: 4px;
   box-sizing: border-box;
+  color: #222;
   font-family: Arial;
   font-size: 14px;
   height: 40px;
@@ -27,64 +9,100 @@
   outline: none;
   padding: 10px; }
 
-.wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'] {
+.wgm-btn, .wgm-form button, .wgm-form input[type='button'], .wgm-form input[type='submit'], .wgm-form input[type='reset'] {
   background-color: #efefef;
   border: 1px solid #a3a3a3;
-  color: #222;
   cursor: pointer;
   transition: box-shadow .1s linear; }
-  .wgm-form button:hover, .wgm-form input[type='button']:hover, .wgm-form input[type='submit']:hover, .wgm-form input[type='reset']:hover {
-    box-shadow: 0 0 40px #d6d6d6 inset; }
-  .wgm-form button:active, .wgm-form input[type='button']:active, .wgm-form input[type='submit']:active, .wgm-form input[type='reset']:active {
+  .wgm-btn:hover, .wgm-form button:hover, .wgm-form input[type='button']:hover, .wgm-form input[type='submit']:hover, .wgm-form input[type='reset']:hover {
+    box-shadow: 0 0 50px #d6d6d6 inset; }
+  .wgm-btn:active, .wgm-form button:active, .wgm-form input[type='button']:active, .wgm-form input[type='submit']:active, .wgm-form input[type='reset']:active {
     transform: translateY(1.5px); }
 
-.wgm-form [type="submit"] {
-  background-color: #3c8dbc;
-  border-color: #1d455b;
-  color: ghostwhite; }
-  .wgm-form [type="submit"]:hover {
-    box-shadow: 0 0 20px #307095 inset; }
+.wgm-form legend, .wgm-form label {
+  font-family: Arial; }
 
-.wgm-form [type="reset"] {
-  background-color: #E06565;
-  border-color: #a42121;
-  color: ghostwhite; }
-  .wgm-form [type="reset"]:hover {
-    box-shadow: 0 0 40px #b83d3d inset; }
+.wgm-btn {
+  border: 1px solid #a3a3a3; }
+  .wgm-btn.wgm-green {
+    background-color: #70C870;
+    border-color: #5ec15e;
+    color: #FFF; }
+    .wgm-btn.wgm-green:hover {
+      box-shadow: 0 0 50px #4bba4b inset; }
+  .wgm-btn.wgm-red, .wgm-form [type="reset"] {
+    background-color: #E06565;
+    border-color: #dc5050;
+    color: #FFF; }
+    .wgm-btn.wgm-red:hover, .wgm-form [type="reset"]:hover {
+      box-shadow: 0 0 50px #d73b3b inset; }
+  .wgm-btn.wgm-blue, .wgm-form [type="submit"] {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #FFF; }
+    .wgm-btn.wgm-blue:hover, .wgm-form [type="submit"]:hover {
+      box-shadow: 0 0 50px #307095 inset; }
+  .wgm-btn.wgm-yellow {
+    background-color: gold;
+    border-color: #e6c200;
+    color: #FFF; }
+    .wgm-btn.wgm-yellow:hover {
+      box-shadow: 0 0 50px #ccac00 inset; }
 
-.wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form select {
-  background-color: #fefefe;
-  border: 1px solid #cccccc;
-  transition: box-shadow .2s linear;
+.wgm-form fieldset {
+  background-color: #fafafa;
+  border: 1px solid #c9c9c9;
+  padding: 5px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0; }
+
+.wgm-form legend {
+  color: #333;
+  font-size: 20px;
+  font-weight: bold; }
+
+.wgm-form label.label {
+  font-size: 20px;
   color: #222; }
-  .wgm-form input[type='text']:not(select):focus, .wgm-form input[type='search']:not(select):focus, .wgm-form input[type='number']:not(select):focus, .wgm-form select:not(select):focus {
+
+.wgm-form.fluid input[type='text'], .wgm-form.fluid input[type='search'], .wgm-form.fluid input[type='number'], .wgm-form.fluid input[type='password'], .wgm-form.fluid select {
+  width: 100%;
+  width: calc(100% - 2px); }
+
+.wgm-form input[type='text'], .wgm-form input[type='search'], .wgm-form input[type='number'], .wgm-form input[type='password'], .wgm-form select {
+  background-color: #fefefe;
+  border: 1px solid #e5e5e5;
+  transition: box-shadow .2s linear; }
+  .wgm-form input[type='text']:not(select):focus, .wgm-form input[type='search']:not(select):focus, .wgm-form input[type='number']:not(select):focus, .wgm-form input[type='password']:not(select):focus, .wgm-form select:not(select):focus {
     box-shadow: 0px 0px 3px #3DFAFF; }
 
 .wgm-form select[multiple] {
   height: auto;
   max-height: 120px; }
 
-.wgm-form .wgm-input-group label {
+.wgm-form .wgm-input-group > label {
   background-color: #ccc;
   border-radius: 4px 0 0 4px;
+  border: 1px solid #d6d6d6;
   border-right: none;
-  border: 1px solid #999999;
   box-sizing: border-box;
   display: block;
   float: left;
   font-family: Arial;
   height: 40px;
-  margin: 0;
+  margin-top: 1px;
+  margin-top: 1px;
   padding: 10px;
   text-align: center;
-  width: 14%;
-  margin-top: 1px; }
+  width: 15%; }
 
-.wgm-form .wgm-input-group input[type='text'], .wgm-form .wgm-input-group input[type='search'], .wgm-form .wgm-input-group input[type='number'], .wgm-form .wgm-input-group select {
-  float: left;
-  display: block;
-  width: 85%;
-  width: calc(86% - 1px);
-  margin-left: 0;
+.wgm-form .wgm-input-group label + input[type='text'], .wgm-form .wgm-input-group input[type='search'], .wgm-form .wgm-input-group input[type='number'], .wgm-form .wgm-input-group input[type='password'], .wgm-form .wgm-input-group select {
   border-left: none;
-  border-radius: 0 4px 4px 0; }
+  border-radius: 0 4px 4px 0;
+  display: block;
+  float: left;
+  margin-left: 0;
+  width: 84%;
+  width: calc(85% - 1px); }

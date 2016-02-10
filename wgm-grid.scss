@@ -63,7 +63,7 @@ $media-tv: "(min-width: 1024px)";
     @media #{$media-tablet} {
         @include create-grid($column-number, sm);
     }
-
+    
     @media #{$media-desktop} {
         @include create-grid($column-number);
     }
