@@ -1,0 +1,71 @@
+// Grid size definitions
+
+@import "variables";
+
+$column-number: 12;
+
+$grid-gutter: 5px;
+
+// Grid names definitions
+
+$grid-class: #{$prefix-name}-grid;
+
+$grid-row: #{$prefix-name}-row;
+
+// Media size definitions
+
+
+// Grid mixin to reuse 
+
+@mixin create-grid($cols, $prefix: false) {
+        
+    @if not $prefix {
+        $name: #{$grid-class};
+    } @else {
+        $name: #{$grid-class}-#{$prefix}
+    }
+
+    @for $i from 1 through $cols {
+        & .#{$name}-#{$i} {
+            padding: $grid-gutter;
+            width: percentage($i/$column-number);
+        }
+    }
+}
+
+.#{$grid-row} {
+
+    box-sizing:border-box;
+    margin:0;
+    width:100%;
+    margin-right: -$grid-gutter;
+    margin-left: -$grid-gutter;
+
+    &:before, &:after{
+        content: ' ';
+        display:block;
+        clear:both;
+    }
+
+    [class*="#{$grid-class}"] {
+        box-sizing: border-box;
+        float:left;
+        margin:0;
+        min-height:1px;
+    }
+
+    @include create-grid($column-number, xs);
+
+    @media (min-width: #{$media-tablet}) {
+        @include create-grid($column-number, sm);
+    }
+    
+    @media (min-width: #{$media-desktop}) {
+        @include create-grid($column-number);
+
+    }
+
+    @media (min-width: #{$media-tv}) {
+        @include create-grid($column-number, lg);
+    }
+}

@@ -1,0 +1,213 @@
+@import "variables";
+@import "button_colors";
+
+// Default class name definitions 
+
+
+$form-name: "#{$prefix-name}-form";
+
+$form-button-name: "#{$prefix-name}-btn";
+
+$form-input-name: "#{$prefix-name}-input";
+
+
+// Input definitions 
+
+$input-bg-color: #fefefe;
+
+$input-focus-color: #3DFAFF;
+
+$input-font-size: 14px;
+
+$input-height: 40px;
+
+$input-font-family: Arial;
+
+$input-margin: 2px;
+
+
+// Label styles :d
+$label-bg: #ccc;
+
+// Elements 
+
+$inputs: "input[type='text'], input[type='search'],input[type='number'], input[type='password'], input[type='email'], select";
+
+$buttons: "button, input[type='button'], input[type='submit'], input[type='reset']";
+
+@mixin button-box-shadow($color, $amount: 10%) {
+    box-shadow: 0 0 50px darken($color, $amount) inset;
+}
+
+@mixin create-extensive-button ($name, $bg-color, $color: #fff) {
+
+    &.#{$prefix-name}-#{$name} {
+       background-color: $bg-color;
+       border-color: darken($bg-color, 5%);   
+       color: $color;
+       text-shadow: 0 0 1px #777;
+       &:hover {
+           @include button-box-shadow($bg-color);
+       }
+    }
+}
+
+%default-style {
+    border-radius:4px;
+    box-sizing:border-box;
+    color: #222;
+    font-family:$input-font-family;
+    font-size: $input-font-size;
+    height: $input-height;
+    margin:$input-margin -3.5px $input-margin $input-margin;
+    outline: none; 
+    padding:10px;
+}
+
+%input-style{
+    @extend %default-style;
+    background-color:$input-bg-color;
+    border:1px solid darken($input-bg-color, 20%);
+    transition: box-shadow .2s linear;
+    &:not(select):focus{
+        box-shadow: 0px 0px 3px $input-focus-color;
+    }
+}
+
+%button-style {
+    @extend %default-style;
+    background-color: $default-color;
+    border: 1px solid darken($default-color, 30%);
+    cursor:pointer;
+    transition: box-shadow .1s linear;
+
+    &:hover {
+        @include button-box-shadow($default-color);
+    }
+
+    &:active {
+        transform: translateY(1.5px);
+    }
+}
+
+%font-family {
+    font-family: Arial;
+}
+
+.#{$prefix-name}-btn {
+
+    @extend %button-style;
+
+    @include create-extensive-button(green, $success-color);
+
+    @include create-extensive-button(red, $cancel-color);
+
+    @include create-extensive-button(blue, $confirm-color);
+
+    @include create-extensive-button(yellow, $warning-color);
+
+}
+
+.#{$prefix-name}-input {
+    @extend %input-style;
+}
+
+.#{$form-name} {
+
+    display:block;
+    margin:0 auto;
+    transition: width .1s linear;
+    
+    &.login{
+        @media (min-width: #{$media-desktop}) {
+            width:70%;
+        }
+    }
+    
+    &.fluid {
+        #{$inputs}, #{$buttons} { 
+            width:100%;
+            width:calc(100% - 2px);
+        }
+    }
+
+    fieldset {
+        background-color: #fafafa;
+        border:1px solid darken($default-color, 15%);
+        padding:5px;
+        display:block;
+        width:100%;
+        box-sizing:border-box;
+        margin:4px 0;
+    }
+
+    legend {
+        color: #333;
+        font-size:20px;
+        font-weight:bold;
+        @extend %font-family;
+    }
+    
+    label {
+        @extend %font-family;
+    }
+
+    label.label {
+        font-size:20px;
+        color: #222;
+    }    
+
+    #{$buttons} {
+        @extend %button-style;
+    }
+    
+    // Gambiarra avançada
+
+    [type="submit"] {
+        @extend .#{$prefix-name}-btn.#{$prefix-name}-blue;
+    }
+
+    [type="reset"] {
+        @extend .#{$prefix-name}-btn.#{$prefix-name}-red;
+    }
+
+    #{$inputs} {
+        @extend %input-style;
+    }
+
+    select[multiple] {
+        height:auto;
+        max-height: $input-height * 3;
+    }
+
+    .#{$prefix-name}-input-group {
+
+        > label {
+            background-color: darken($default-color, 10%);
+            border-radius:4px 0 0 4px;
+            border:1px solid darken($default-color, 10%);
+            border-right:none;
+            box-sizing:border-box;
+            display:block;
+            float:left;
+            font-family: $input-font-family;
+            height: $input-height;
+            margin-top:$input-margin;
+            margin-top:$input-margin;
+            padding:10px;
+            text-align:center;
+            width:15%;
+        }
+
+        label+#{$inputs} {
+            border-left:none;
+            border-radius:0 4px 4px 0;
+            display:block;
+            float:left;
+            margin-left:0;
+            width:84%;
+            width:calc(85% - #{$input-margin});
+        }
+    }
+
+}

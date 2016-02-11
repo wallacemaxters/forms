@@ -1,0 +1,21 @@
+{
+  "name": "wgm-forms",
+  "description": "Estilos e validações para formulários",
+  "main": "",
+  "authors": [
+    "Wallace de Souza <wallacemaxters@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/wallacemaxters/forms",
+  "moduleType": [],
+  "dependencies": {
+    "jquery": "1.*"
+  },
+
+  "install": {
+    "path": {
+      "css": "public/css",
+      "js": "public/js"
+    }
+  }
+}

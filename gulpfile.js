@@ -1,17 +1,34 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp = require('gulp'),
+	sass = require('gulp-sass'),
+	coffee = require('gulp-coffee'),
+	uglifycss = require('gulp-uglifycss');
+
+
+var css_path = './public/css',
+	js_path = './public/js';
 
 gulp.task('sass', function () {
 
-	var input = './*.scss';
-	var output = './public/css';
-
 	return gulp
-	// Find all `.scss` files from the `stylesheets/` folder
-	.src(input)
-	// Run Sass on those files
-	.pipe(sass())
-	// Write the resulting CSS in the output folder
-	.pipe(gulp.dest(output));
+		.src('./sass/*.scss')		
+		.pipe(sass())
+		.pipe(gulp.dest(css_path))
 
 });
+
+gulp.task('ugly', function () {
+
+	gulp.src(css_path)
+		.pipe(uglifycss({
+	      "max-line-len": 1000
+	    }))
+	    .pipe(gulp.dest(css_path))
+});
+
+
+gulp.task('coffee', function ()
+{
+	gulp.src('./coffee/*.coffee')
+		.pipe(coffee({bare: true}))
+		.pipe(gulp.dest(js_path));
+})
