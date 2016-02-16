@@ -9,7 +9,8 @@
   "homepage": "https://github.com/wallacemaxters/forms",
   "moduleType": [],
   "dependencies": {
-    "jquery": "1.*"
+    "jquery": "1.*",
+    "react" : "0.*"
   },
 
   "install": {

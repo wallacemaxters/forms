@@ -52,14 +52,18 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
     }
 }
 
+%box-sizing {
+    box-sizing: border-box;
+}
+
 %default-style {
     border-radius:4px;
-    box-sizing:border-box;
+    @extend %box-sizing;
     color: #222;
     font-family:$input-font-family;
     font-size: $input-font-size;
     height: $input-height;
-    margin:$input-margin -3.5px $input-margin $input-margin;
+    margin: $input-margin;
     outline: none; 
     padding:10px;
 }
@@ -77,9 +81,14 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
 %button-style {
     @extend %default-style;
     background-color: $default-color;
+    background-image: none;
     border: 1px solid darken($default-color, 30%);
     cursor:pointer;
+    margin-left:0;
+    margin-right:0;
     transition: box-shadow .1s linear;
+    vertical-align: middle;
+    white-space: nowrap;
 
     &:hover {
         @include button-box-shadow($default-color);
@@ -88,10 +97,43 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
     &:active {
         transform: translateY(1.5px);
     }
+
+    &:after, &:before{
+        white-space-collapse:collapse;
+    }
 }
 
-%font-family {
+%font-family {  
     font-family: Arial;
+}
+
+%clearfix {
+    &:after{
+        content: ' ';
+        display:block;
+        clear:both;
+    }
+}
+
+%message {
+    @extend %font-family;
+    background-color: $default-color;
+    border:darken($default-color, 20%);
+    @extend %box-sizing;
+    display:block;
+    float:left;
+    font-size:12px;
+    margin:$input-margin;
+    padding:5px;
+    width:calc(100% - #{$input-margin});
+
+    &:empty{
+        display:none;
+    }
+}
+
+.#{$prefix-name}-input-message{
+    @extend %message;
 }
 
 .#{$prefix-name}-btn {
@@ -113,32 +155,30 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
 }
 
 .#{$form-name} {
-
+    
+    @extend %box-sizing;
     display:block;
     margin:0 auto;
-    transition: width .1s linear;
-    
-    &.login{
-        @media (min-width: #{$media-desktop}) {
-            width:70%;
-        }
-    }
-    
+    width:100%;
+
     &.fluid {
-        #{$inputs}, #{$buttons} { 
+        #{$inputs}{ 
             width:100%;
             width:calc(100% - 2px);
         }
     }
 
     fieldset {
+        @extend %box-sizing;
         background-color: #fafafa;
         border:1px solid darken($default-color, 15%);
-        padding:5px;
         display:block;
+        margin-top: 5px;
+        margin-bottom:5px;
+        margin-right:0;
+        margin-left:0;
+        padding:5px;
         width:100%;
-        box-sizing:border-box;
-        margin:4px 0;
     }
 
     legend {
@@ -150,13 +190,15 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
     
     label {
         @extend %font-family;
-    }
-
-    label.label {
-        font-size:20px;
         color: #222;
-    }    
-
+        display:inline-block;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 1.5;
+        max-width:100%;
+        padding:10px;
+    }
+ 
     #{$buttons} {
         @extend %button-style;
     }
@@ -182,12 +224,14 @@ $buttons: "button, input[type='button'], input[type='submit'], input[type='reset
 
     .#{$prefix-name}-input-group {
 
+        @extend %clearfix;
+
         > label {
             background-color: darken($default-color, 10%);
             border-radius:4px 0 0 4px;
             border:1px solid darken($default-color, 10%);
             border-right:none;
-            box-sizing:border-box;
+            @extend %box-sizing;
             display:block;
             float:left;
             font-family: $input-font-family;

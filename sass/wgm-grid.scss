@@ -6,16 +6,12 @@ $column-number: 12;
 
 $grid-gutter: 5px;
 
-// Grid names definitions
-
 $grid-class: #{$prefix-name}-grid;
 
 $grid-row: #{$prefix-name}-row;
 
-// Media size definitions
 
-
-// Grid mixin to reuse 
+%box-sizing { box-sizing: border-box; }
 
 @mixin create-grid($cols, $prefix: false) {
         
@@ -27,19 +23,31 @@ $grid-row: #{$prefix-name}-row;
 
     @for $i from 1 through $cols {
         & .#{$name}-#{$i} {
-            padding: $grid-gutter;
             width: percentage($i/$column-number);
         }
     }
 }
 
+.#{$prefix-name}-container{
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $grid-gutter;
+    padding-right: $grid-gutter;
+    width: 96%;
+    @extend %box-sizing;
+
+    .#{$grid-row} {
+        margin-left: -$grid-gutter;
+        margin-right: -$grid-gutter;
+    }
+}
+
 .#{$grid-row} {
 
-    box-sizing:border-box;
+    @extend %box-sizing;
     margin:0;
     width:100%;
-    margin-right: -$grid-gutter;
-    margin-left: -$grid-gutter;
 
     &:before, &:after{
         content: ' ';
@@ -48,21 +56,21 @@ $grid-row: #{$prefix-name}-row;
     }
 
     [class*="#{$grid-class}"] {
-        box-sizing: border-box;
+        @extend %box-sizing;
         float:left;
         margin:0;
         min-height:1px;
+        padding: $grid-gutter;
     }
 
-    @include create-grid($column-number, xs);
+    @include create-grid($column-number);
 
     @media (min-width: #{$media-tablet}) {
         @include create-grid($column-number, sm);
     }
     
     @media (min-width: #{$media-desktop}) {
-        @include create-grid($column-number);
-
+        @include create-grid($column-number, md);   
     }
 
     @media (min-width: #{$media-tv}) {

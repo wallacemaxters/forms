@@ -1,21 +1,24 @@
+<?php #header('Refresh: 15') ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Form</title>
-
+    
+    <link rel="stylesheet" type="text/css" href="./public/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./public/css/wgm-form.css" />
     <link rel="stylesheet" type="text/css" href="./public/css/wgm-grid.css" />
 
 </head>
 <body>
-
-    <form class="wgm-form fluid">
+    
+    <section class="container">
+    <form class="wgm-form wgm-login">
         <fieldset>
         <!-- <legend>Form Wallace</legend> -->
             <div class="wgm-row">
                 <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
                     <div class="wgm-input-group">
-                        <label>mês</label>
+                        <label><small>mês</small></label>
                         <select>
                         <?php foreach (range(1, 12) as $key => $value): ?>
                             <option value="<?= $value ?>"><?= strftime('%B', mktime(0, 0, 0, $value, 1)) ?></option>
@@ -26,7 +29,7 @@
 
                 <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
                     <div class="wgm-input-group">
-                        <label >&#9993;</label>
+                        <label><small>e-mail</small></label>
                         <input type="text" />
                     </div>
                 </div>
@@ -34,7 +37,7 @@
                 <div class="wgm-grid-4 wgm-grid-sm-6 wgm-grid-xs-12">
                     
                     <div class="wgm-input-group">
-                        <label>Senha</label>
+                        <label><small>senha</small></label>
                         <input type="password" />
                     </div>
                 </div>
@@ -93,6 +96,8 @@
             <button class="wgm-btn wgm-yellow">WGM-BTN YELLOW</button>
         </div>
     </div>
+
+    </section>
 
 </body>
 </html>
